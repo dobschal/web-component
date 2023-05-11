@@ -1,0 +1,50 @@
+@keyframes fade-in {
+    0% {
+        opacity: 0;
+        transform: translateY(5px);
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+* {
+    box-sizing: border-box;
+    animation-name: fade-in;
+    animation-duration: 0.3s;
+    animation-timing-function: ease-in-out;
+}
+
+body {
+    display: flex;
+    margin: 0;
+    width: 100%;
+    min-height: 100vh;
+}
+
+.page {
+    margin: auto;
+    width: 100%;
+    max-width: 480px;
+    min-height: 60vh;
+}
+
+.layout {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    width: 100%;
+    min-height: 100vh;
+}
+
+header {
+    color: white;
+    background-color: black;
+    height: 50px;
+    line-height: 50px;
+}
+
+header h1 {
+    margin: 0 1rem;
+}
