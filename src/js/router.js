@@ -4,24 +4,28 @@ import HomePage from "./pages/HomePage.js";
 import LoginPage from "./pages/LoginPage.js";
 import DefaultLayout from "./layouts/DefaultLayout.js";
 
+export const routes = {
+    "/login": [DefaultLayout, LoginPage],
+    "/": [DefaultLayout, HomePage]
+};
+
 export const router = new Navigo("/");
-let activeLayout = undefined;
+export let activeLayout;
 
-router
-    .on("/login", () => showPage(DefaultLayout, LoginPage))
-    .on("/", () => showPage(DefaultLayout, HomePage));
-
-function showPage(layout, page) {
-    if (activeLayout !== layout) {
-        activeLayout = layout;
-        renderInto("body", layout);
-    }
-    renderInto("#page", page);
+for (const path in routes) {
+    router.on(path, () => _showPage(routes[path][0], routes[path][1]));
 }
 
-function renderInto(query, plainNode) {
+function _showPage(layout, page) {
+    if (activeLayout !== layout) {
+        activeLayout = layout;
+        _renderInto("body", layout);
+    }
+    _renderInto("#page", page);
+}
+
+function _renderInto(query, plainNode) {
     const parentElement = document.querySelector(query);
-    if (!parentElement) console.log("Cannot find: ", query);
     parentElement.innerHTML = "";
     parentElement.append(render(plainNode));
 }

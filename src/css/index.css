@@ -1,7 +1,9 @@
+@import url("labeled-input.css");
+
 @keyframes fade-in {
     0% {
         opacity: 0;
-        transform: translateY(5px);
+        transform: translateX(5px);
     }
 
     100% {
@@ -9,7 +11,12 @@
     }
 }
 
-* {
+@font-face {
+    font-family: "Open Sans";
+    src: url("../fonts/Open-Sans.ttf");
+}
+
+*:not(b, i, u, span, input, label) {
     box-sizing: border-box;
     animation-name: fade-in;
     animation-duration: 0.3s;
@@ -21,6 +28,11 @@ body {
     margin: 0;
     width: 100%;
     min-height: 100vh;
+    font-family: "Open Sans";
+}
+
+button {
+    display: block;
 }
 
 .page {

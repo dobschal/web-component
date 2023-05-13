@@ -1,3 +1,4 @@
+import LabeledInput from "../partial/LabeledInput.js";
 import { router } from "../router.js";
 
 export default {
@@ -12,5 +13,16 @@ export default {
         onClick() {
             router.navigate("/");
         }
-    }]
+    }, LabeledInput({
+        labelText: "Username",
+        onInput() {
+            console.log("Value changed");
+        }
+    }), LabeledInput({
+        labelText: "Password",
+        type: "password",
+        onInput() {
+            console.log("Value changed");
+        }
+    })]
 };

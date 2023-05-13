@@ -1,10 +1,9 @@
 export function render(plainNode) {
-    if (!plainNode.update) {
+    if (typeof plainNode.update !== "function") {
         plainNode.update = () => render(plainNode);
     }
-    let isUpdate = true;
-    if (!(plainNode.element instanceof HTMLElement)) {
-        isUpdate = false;
+    let isUpdate = plainNode.element instanceof HTMLElement;
+    if (!isUpdate) {
         plainNode.element = document.createElement(plainNode.tag ?? "div");
     }
     for (const key in plainNode) {
